@@ -12,6 +12,7 @@ st.markdown("""
     .stApp { font-family: 'Noto Sans KR', sans-serif; }
 
     [data-testid="stSidebarNav"] { display: none; }
+    [data-testid="stSidebar"] { display: none; }
 
     .hero-title {
         font-size: 42px;
@@ -59,7 +60,6 @@ st.markdown("""
     .badge-ready { background: #e8f5e9; color: #2e7d32; }
     .badge-soon  { background: #fff3e0; color: #e65100; }
 
-    /* 버튼 크게 */
     [data-testid="stPageLink"] a {
         font-size: 16px !important;
         font-weight: 700 !important;
@@ -69,6 +69,11 @@ st.markdown("""
         color: white !important;
         display: block;
         text-align: center;
+    }
+    [data-testid="stPageLink"] a p {
+        color: white !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
     }
     [data-testid="stPageLink"] a:hover {
         background-color: #2e2e5e !important;
