@@ -112,7 +112,7 @@ with col1:
         <span class='badge badge-ready'>✅ 사용 가능</span>
     </div>
     """, unsafe_allow_html=True)
-    st.page_link("pages/mosfet.py", label="🔌 MOSFET 시뮬레이터 시작", use_container_width=True)
+    st.page_link("pages/mosfet.py", label=" 🔌 MOSFET 시뮬레이터 시작", use_container_width=True)
 
 with col2:
     st.markdown("""
@@ -127,7 +127,7 @@ with col2:
         <span class='badge badge-soon'>🚧 준비 중</span>
     </div>
     """, unsafe_allow_html=True)
-    st.page_link("pages/bjt.py", label="🔬 BJT 시뮬레이터 시작", use_container_width=True)
+    st.page_link("pages/bjt.py", label=" 🔬 BJT 시뮬레이터 시작", use_container_width=True)
 
 st.markdown("<hr class='divider'>", unsafe_allow_html=True)
 st.markdown("<div class='footer'>Semiconductor Device Simulator · Powered by Streamlit & Gemini AI</div>",
