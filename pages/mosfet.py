@@ -56,10 +56,8 @@ for key, default in [("vth_val", 1.0), ("vgs_val", 2.6), ("vds_val", 3.7)]:
 # ── 사이드바 ─────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("## 🎛️ 제어 및 입력 패널")
-    st.divider()
 
     device = st.selectbox("소자 타입 선택", ["NMOS", "PMOS"])
-    st.divider()
 
     st.markdown("**문턱 전압 |V_TH| (V)**")
     vth = st.slider("V_TH", 0.0, 2.0,
@@ -82,7 +80,6 @@ with st.sidebar:
                     label_visibility="collapsed")
     st.session_state["vds_val"] = vds
 
-    st.divider()
     st.markdown("**🤖 ASK AI**")
     user_question = st.text_area(
         "", height=100,
