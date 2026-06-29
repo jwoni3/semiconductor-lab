@@ -56,7 +56,6 @@ for key, default in [("vth_val", 1.0), ("vgs_val", 2.6), ("vds_val", 3.7)]:
 # ── 사이드바 ─────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("## 🎛️ 제어 및 입력 패널")
-    st.divider()
 
     device = st.selectbox("소자 타입 선택", ["NMOS", "PMOS"])
     st.divider()
@@ -313,7 +312,7 @@ with col_mid:
     fig_iv.update_xaxes(showgrid=True, gridcolor='rgba(128,128,128,0.2)')
     fig_iv.update_yaxes(showgrid=True, gridcolor='rgba(128,128,128,0.2)')
     st.plotly_chart(fig_iv, use_container_width=True, theme="streamlit")
-
+    st.divider()
 
     # ── 에너지 밴드 다이어그램 (plotly, Source-Channel-Drain 3구간) ──
     Eg   = 1.12
