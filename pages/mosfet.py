@@ -39,9 +39,9 @@ st.markdown("""
         border: 1px solid #555 !important;
         border-radius: 8px !important;
         font-size: 13px !important;
-        padding: 0px 12px !important;      /* 4px → 0px */
+        padding: 4px 12px !important;      
         min-height: 32px !important;
-        line-height: 1 !important;         /* 추가 */
+
         transition: background-color 0.2s ease;
     }
     [data-testid="stSidebar"] div.stButton > button:hover {
