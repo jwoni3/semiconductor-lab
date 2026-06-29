@@ -18,6 +18,10 @@ st.set_page_config(
 # ── CSS 스타일 ───────────────────────────────────────────────
 st.markdown("""
 <style>
+    [data-testid="stSidebarUserContent"] {
+        padding-top: 0rem !important;
+    }
+    
     .main { background-color: #f8f9fa; }
     .stApp { font-family: 'Noto Sans KR', sans-serif; }
     [data-testid="stSidebar"] { background-color: #1a1a2e; }
