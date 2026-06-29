@@ -26,7 +26,7 @@ st.markdown("""
         background-color: #2a2a4e !important;
         border-color: #555 !important;
         color: white !important;
-        
+   }     
     [data-testid="stSidebarNav"] {
         display: none !important;
     }
@@ -41,7 +41,6 @@ st.markdown("""
     [data-testid="stSidebar"] div.stButton > button:hover {
         background-color: #3b3b6d !important;   /* 마우스 올렸을 때 자연스럽게 밝아짐 */
         border-color: #777 !important;
-    }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -70,8 +69,6 @@ for key, default in [("vth_val", 1.0), ("vgs_val", 2.6), ("vds_val", 3.7)]:
         st.session_state[key] = default
 
 # ── 사이드바 ─────────────────────────────────────────────────
-st.markdown("""
-
 with st.sidebar:
     # 🏠 최상단에 홈으로 돌아가기 버튼 추가
     if st.button("⬅ 홈으로 돌아가기", use_container_width=True):
