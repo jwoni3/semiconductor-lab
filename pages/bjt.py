@@ -20,6 +20,7 @@ st.markdown("""
         margin-bottom: 5px !important;
         margin-top: 5px !important;
     }
+    [data-testid="stSidebarNav"] { display: none !important; }
     [data-testid="stSidebar"] hr { margin: 6px 0 !important; }
     [data-testid="stSidebar"] .stSlider {
         margin-top: 0px !important;
