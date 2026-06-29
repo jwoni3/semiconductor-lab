@@ -10,29 +10,17 @@ st.markdown("""
     [data-testid="stSidebarUserContent"] {
         padding-top: 0rem !important;
     }
-    .main { background-color: #f8f9fa; }
-    [data-testid="stSidebar"] * { color: white !important; }
-    [data-testid="stSidebarNav"] { display: none !important; }
-
-    [data-testid="stSidebar"] div.stButton > button {
-        background-color: #2a2a4e !important;
-        color: white !important;
-        border: 1px solid #555 !important;
-        border-radius: 8px !important;
-        font-size: 13px !important;
-        padding: 4px 12px !important;
-        min-height: 32px !important;
-        transition: background-color 0.2s ease;
-    }
-    [data-testid="stSidebar"] div.stButton > button:hover {
-        background-color: #3b3b6d !important;
-        border-color: #777 !important;
-    }
+    [data-testid="stSidebar"] .element-container,
     [data-testid="stSidebar"] div[data-testid="stMarkdownContainer"] p {
-        font-size: 14px !important;
-        margin-top: 10px !important;
         margin-bottom: 0px !important;
+        margin-top: 0px !important;
     }
+    [data-testid="stSidebar"] h3 {
+        font-size: 0.95rem !important;
+        margin-bottom: 5px !important;
+        margin-top: 5px !important;
+    }
+    [data-testid="stSidebar"] hr { margin: 6px 0 !important; }
     [data-testid="stSidebar"] .stSlider {
         margin-top: 0px !important;
         padding-bottom: 0px !important;
@@ -48,25 +36,26 @@ st.markdown("""
         margin-top: -4px !important;
         margin-bottom: -4px !important;
     }
-    [data-testid="stSidebar"] .stTextArea {
-        margin-top: 4px !important;
-        margin-bottom: -4px !important;
-    }
-    [data-testid="stSidebar"] .stTextArea textarea {
-        font-size: 13px !important;
-    }
     [data-testid="stSidebar"] .stNumberInput div[data-baseweb="input"],
     [data-testid="stSidebar"] .stNumberInput div[data-baseweb="base-input"] {
-        background-color: #2a2a4e !important;
+        background-color: #ffffff !important;
     }
     [data-testid="stSidebar"] .stNumberInput input {
         height: 26px !important;
         padding: 1px 4px !important;
         font-size: 0.75rem !important;
-        color: white !important;
-        background-color: #2a2a4e !important;
+        color: #2c3e50 !important;
+        background-color: #ffffff !important;
     }
-    div[data-testid="stRadio"] > div { flex-direction: row !important; gap: 4px !important; }
+    [data-testid="stSidebar"] .stTextArea {
+        margin-top: 4px !important;
+        margin-bottom: -4px !important;
+    }
+    [data-testid="stSidebar"] .stTextArea textarea {
+        font-size: 0.78rem !important;
+        padding: 5px !important;
+        color: #2c3e50 !important;
+    }
 
     /* 메인 영역 카드 스타일 (기존 유지) */
     .stat-card {
@@ -86,7 +75,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ── 사이드바
 with st.sidebar:
     if st.button("⬅ 홈으로 돌아가기", use_container_width=True):
         st.switch_page("app.py")
@@ -103,8 +91,11 @@ with st.sidebar:
     def update_bc_slider(): st.session_state.v_bc_val = st.session_state.bc_num
     def update_bc_num():    st.session_state.bc_num   = st.session_state.v_bc_val
 
+    st.markdown("---")
+    st.markdown("<span style='font-size:0.8rem; font-weight:700; color:#1e293b;'>접합 전압 인가</span>", unsafe_allow_html=True)
+
     label_be = "베이스-에미터 전압 V_BE (V)" if bjt_type == "NPN" else "에미터-베이스 전압 V_EB (V)"
-    st.markdown(f"**{label_be}**")
+    st.markdown(f"<span style='font-size:0.75rem;font-weight:700;color:#2c3e50;'>{label_be}</span>", unsafe_allow_html=True)
     V_be = st.slider(label_be, min_value=-5.0, max_value=5.0, step=0.05,
                      key="v_be_val", on_change=update_be_num, label_visibility="collapsed")
     st.number_input(label_be, min_value=-5.0, max_value=5.0, step=0.05,
@@ -112,18 +103,20 @@ with st.sidebar:
                     value=st.session_state.v_be_val, label_visibility="collapsed")
 
     label_bc = "베이스-컬렉터 전압 V_BC (V)" if bjt_type == "NPN" else "컬렉터-베이스 전압 V_CB (V)"
-    st.markdown(f"**{label_bc}**")
+    st.markdown(f"<span style='font-size:0.75rem;font-weight:700;color:#2c3e50;margin-top:2px;display:block;'>{label_bc}</span>", unsafe_allow_html=True)
     V_bc = st.slider(label_bc, min_value=-5.0, max_value=5.0, step=0.1,
                      key="v_bc_val", on_change=update_bc_num, label_visibility="collapsed")
     st.number_input(label_bc, min_value=-5.0, max_value=5.0, step=0.1,
                     key="bc_num", on_change=update_bc_slider,
                     value=st.session_state.v_bc_val, label_visibility="collapsed")
 
-    st.markdown("**💬 ASK AI**")
-    user_question = st.text_area("질문 입력", height=80, label_visibility="collapsed",
+    st.markdown("---")
+    st.markdown("<span style='font-size:0.8rem;font-weight:700;color:#1e293b;'>💬 ASK AI</span>", unsafe_allow_html=True)
+    user_question = st.text_area("질문 입력", height=60, label_visibility="collapsed",
+                                 value="현재 바이어스 상태가 증폭기로서 왜 적합한지 밴드 다이어그램 관점에서 설명해줘.",
                                  placeholder="e.g. 현재 전압 조건 상태에 대해 물리적으로 쉽게 설명해줘.")
     ai_btn = st.button("⊙ AI 실시간 해설 보기", use_container_width=True)
-
+    
 # ── 물리량 계산
 V_CC    = 5.0; R_C = 800.0; beta = 150; V_AF = 100.0
 early_k = 1.0 / V_AF
