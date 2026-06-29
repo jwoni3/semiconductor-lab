@@ -26,6 +26,22 @@ st.markdown("""
         background-color: #2a2a4e !important;
         border-color: #555 !important;
         color: white !important;
+        
+    [data-testid="stSidebarNav"] {
+        display: none !important;
+    }
+
+    [data-testid="stSidebar"] div.stButton > button {
+        background-color: #2a2a4e !important;   /* 셀렉트박스와 톤 일치 */
+        color: white !important;                 /* 글자색 흰색으로 선명하게 */
+        border: 1px solid #555 !important;      /* 셀렉트박스와 동일한 테두리 */
+        border-radius: 8px !important;
+        transition: background-color 0.2s ease;
+    }
+    [data-testid="stSidebar"] div.stButton > button:hover {
+        background-color: #3b3b6d !important;   /* 마우스 올렸을 때 자연스럽게 밝아짐 */
+        border-color: #777 !important;
+    }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -55,13 +71,6 @@ for key, default in [("vth_val", 1.0), ("vgs_val", 2.6), ("vds_val", 3.7)]:
 
 # ── 사이드바 ─────────────────────────────────────────────────
 st.markdown("""
-<style>
-    /* 사이드바 최상단에 생기는 기본 페이지 이동 메뉴를 강제로 숨깁니다 */
-    [data-testid="stSidebarNav"] {
-        display: none !important;
-    }
-</style>
-""", unsafe_allow_html=True)
 
 with st.sidebar:
     # 🏠 최상단에 홈으로 돌아가기 버튼 추가
