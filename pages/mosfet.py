@@ -60,7 +60,7 @@ st.markdown("""
     }
     /* min/max 눈금을 트랙 바로 아래 붙이기 */
     [data-testid="stSidebar"] [data-testid="stSliderTickBar"] {
-        margin-top: -14px !important;
+        margin-top: -20px !important;
     }
     [data-testid="stSidebar"] .stSelectbox {
         margin-top: -4px !important;
