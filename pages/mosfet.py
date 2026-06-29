@@ -95,7 +95,7 @@ with st.sidebar:
 
     # 슬라이더 컴팩트 배치 적용
     st.markdown("**문턱 전압 |V_TH| (V)**")
-    st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 7px;'></div>", unsafe_allow_html=True)
     vth = st.slider("V_TH", 0.0, 2.0,
                     value=float(st.session_state["vth_val"]),
                     step=0.1, key="vth_slide",
@@ -103,7 +103,7 @@ with st.sidebar:
     st.session_state["vth_val"] = vth
 
     st.markdown("**게이트 전압 V_GS (V)**")
-    st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 7px;'></div>", unsafe_allow_html=True)
     vgs = st.slider("V_GS", 0.0, 5.0,
                     value=float(st.session_state["vgs_val"]),
                     step=0.1, key="vgs_slide",
@@ -111,7 +111,7 @@ with st.sidebar:
     st.session_state["vgs_val"] = vgs
 
     st.markdown("**드레인 전압 V_DS (V)**")
-    st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 7px;'></div>", unsafe_allow_html=True)
     vds = st.slider("V_DS", 0.0, 5.0,
                     value=float(st.session_state["vds_val"]),
                     step=0.1, key="vds_slide",
