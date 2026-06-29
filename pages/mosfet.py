@@ -122,7 +122,7 @@ def calc_mosfet(device, vgs, vds, vth, Kn=1.0, Kp=1.0):
         else:
             region = "Saturation"
             id_mA = 0.5 * Kp * vgs_eff**2
-    return region, round(id_mA, 2), vds_sat
+    return region,id_mA, vds_sat
 
 region, id_mA, vds_sat = calc_mosfet(device, vgs, vds, vth)
 
