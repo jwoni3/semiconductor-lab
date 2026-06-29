@@ -58,7 +58,8 @@ with st.sidebar:
     st.markdown("## 🎛️ 제어 및 입력 패널")
 
     device = st.selectbox("소자 타입 선택", ["NMOS", "PMOS"])
-
+    st.divider()
+    
     st.markdown("**문턱 전압 |V_TH| (V)**")
     vth = st.slider("V_TH", 0.0, 2.0,
                     value=float(st.session_state["vth_val"]),
