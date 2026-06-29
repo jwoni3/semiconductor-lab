@@ -53,13 +53,13 @@ st.markdown("""
     /* 슬라이더 레이블(마크다운 p) 위아래 간격 */
     [data-testid="stSidebar"] div[data-testid="stMarkdownContainer"] p {
         font-size: 14px !important;
-        margin-top: 14px !important;
-        margin-bottom: 0px !important;
+        margin-top: 8px !important;
+        margin-bottom: 4px !important;
     }
     /* 슬라이더 자체 위 여백 */
     [data-testid="stSidebar"] .stSlider {
-        margin-top: 0px !important;
-        padding-bottom: 10px !important;
+        margin-top: -4px !important;
+        padding-bottom: 4px !important;
     }
     /* 슬라이더 내부 숫자(value label) 크기 */
     [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMin"],
