@@ -15,7 +15,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ── CSS 스타일 (사이드바 컴팩트화 스타일 추가) ─────────────────
+# ── CSS 스타일 ─────────────────────────────────────────────
 st.markdown("""
 <style>
     [data-testid="stSidebarUserContent"] {
@@ -36,24 +36,48 @@ st.markdown("""
     }
 
     [data-testid="stSidebar"] div.stButton > button {
-        background-color: #2a2a4e !important;   /* 셀렉트박스와 톤 일치 */
-        color: white !important;                 /* 글자색 흰색으로 선명하게 */
-        border: 1px solid #555 !important;      /* 셀렉트박스와 동일한 테두리 */
+        background-color: #2a2a4e !important;
+        color: white !important;
+        border: 1px solid #555 !important;
         border-radius: 8px !important;
+        font-size: 13px !important;
+        padding: 4px 12px !important;
+        min-height: 32px !important;
         transition: background-color 0.2s ease;
     }
     [data-testid="stSidebar"] div.stButton > button:hover {
-        background-color: #3b3b6d !important;   /* 마우스 올렸을 때 자연스럽게 밝아짐 */
+        background-color: #3b3b6d !important;
         border-color: #777 !important;
     }
 
-    /* 사이드바 내부 요소 간 간격 극대화 축소 (컴팩트 스크롤 방지용) */
+    /* 슬라이더 레이블(마크다운 p) 위아래 간격 */
     [data-testid="stSidebar"] div[data-testid="stMarkdownContainer"] p {
-        margin-bottom: -5px !important;
+        font-size: 14px !important;
+        margin-top: 2px !important;
+        margin-bottom: -8px !important;
     }
+    /* 슬라이더 자체 위 여백 */
     [data-testid="stSidebar"] .stSlider {
-        margin-top: -10px !important;
-        padding-bottom: 5px !important;
+        margin-top: -8px !important;
+        padding-bottom: 0px !important;
+    }
+    /* 슬라이더 내부 숫자(value label) 크기 */
+    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMin"],
+    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMax"] {
+        font-size: 11px !important;
+    }
+    /* 셀렉트박스 위아래 여백 */
+    [data-testid="stSidebar"] .stSelectbox {
+        margin-top: -4px !important;
+        margin-bottom: -4px !important;
+    }
+    /* 텍스트 영역 위 여백 */
+    [data-testid="stSidebar"] .stTextArea {
+        margin-top: -6px !important;
+        margin-bottom: -4px !important;
+    }
+    [data-testid="stSidebar"] .stTextArea textarea {
+        font-size: 13px !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -83,19 +107,14 @@ for key, default in [("vth_val", 1.0), ("vgs_val", 2.6), ("vds_val", 3.7)]:
 
 # ── 사이드바 (Compact Layout 적용) ───────────────────────────
 with st.sidebar:
-    # 🏠 홈으로 돌아가기 버튼
     if st.button("⬅ 홈으로 돌아가기", use_container_width=True):
-        st.switch_page("app.py") 
-        
-    st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+        st.switch_page("app.py")
+
     st.markdown("### 🎛️ 제어 및 입력 패널")
 
     device = st.selectbox("소자 타입 선택", ["NMOS", "PMOS"])
-    st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
 
-    # 슬라이더 컴팩트 배치 적용
     st.markdown("**문턱 전압 |V_TH| (V)**")
-    st.markdown("<div style='height: 7px;'></div>", unsafe_allow_html=True)
     vth = st.slider("V_TH", 0.0, 2.0,
                     value=float(st.session_state["vth_val"]),
                     step=0.1, key="vth_slide",
@@ -103,7 +122,6 @@ with st.sidebar:
     st.session_state["vth_val"] = vth
 
     st.markdown("**게이트 전압 V_GS (V)**")
-    st.markdown("<div style='height: 7px;'></div>", unsafe_allow_html=True)
     vgs = st.slider("V_GS", 0.0, 5.0,
                     value=float(st.session_state["vgs_val"]),
                     step=0.1, key="vgs_slide",
@@ -111,24 +129,20 @@ with st.sidebar:
     st.session_state["vgs_val"] = vgs
 
     st.markdown("**드레인 전압 V_DS (V)**")
-    st.markdown("<div style='height: 7px;'></div>", unsafe_allow_html=True)
     vds = st.slider("V_DS", 0.0, 5.0,
                     value=float(st.session_state["vds_val"]),
                     step=0.1, key="vds_slide",
                     label_visibility="collapsed")
     st.session_state["vds_val"] = vds
 
-    st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
     st.markdown("**🤖 ASK AI**")
-    st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
     user_question = st.text_area(
-        "", height=65,  # 한눈에 보이도록 높이 축소
+        "", height=80,
         placeholder="e.g. 현재 전압 조건 상태에 대해 물리적으로 쉽게 설명해줘.",
         label_visibility="collapsed"
     )
     ask_btn = st.button("☉ AI 실시간 해설 보기", use_container_width=True, type="primary")
-
-
+    
 # ── MOSFET 물리 계산 ─────────────────────────────────────────
 def calc_mosfet(device, vgs, vds, vth, Kn=1.0, Kp=1.0):
     if device == "NMOS":
