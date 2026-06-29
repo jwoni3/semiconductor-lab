@@ -59,8 +59,7 @@ st.markdown("""
         margin-bottom: -10px !important;
     }
     /* min/max 눈금을 트랙 바로 아래 붙이기 */
-    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMin"],
-    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMax"] {
+    [data-testid="stSidebar"] [data-testid="stSliderTickBar"] {
         margin-top: -14px !important;
     }
     [data-testid="stSidebar"] .stSelectbox {
