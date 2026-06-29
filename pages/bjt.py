@@ -116,7 +116,7 @@ with st.sidebar:
     user_question = st.text_area("질문 입력", height=60, label_visibility="collapsed",
                                  value="현재 바이어스 상태가 증폭기로서 왜 적합한지 밴드 다이어그램 관점에서 설명해줘.",
                                  placeholder="e.g. 현재 전압 조건 상태에 대해 물리적으로 쉽게 설명해줘.")
-    ai_btn = st.button("⊙ AI 실시간 해설 보기", use_container_width=True)
+    ai_btn = st.button("⊙ AI 실시간 해설 보기", use_container_width=True, type="primary")
     
 # ── 물리량 계산
 V_CC    = 5.0; R_C = 800.0; beta = 150; V_AF = 100.0
