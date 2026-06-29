@@ -16,7 +16,8 @@ st.set_page_config(
 )
 
 # ── CSS 스타일 ─────────────────────────────────────────────
-st.markdown("""
+아 맞아요, 기존 CSS에 추가하는 거니까 전체 CSS 한번에 정리해드릴게요:
+pythonst.markdown("""
 <style>
     [data-testid="stSidebarUserContent"] {
         padding-top: 0rem !important;
@@ -31,9 +32,7 @@ st.markdown("""
         border-color: #555 !important;
         color: white !important;
     }     
-    [data-testid="stSidebarNav"] {
-        display: none !important;
-    }
+    [data-testid="stSidebarNav"] { display: none !important; }
 
     [data-testid="stSidebar"] div.stButton > button {
         background-color: #2a2a4e !important;
@@ -50,34 +49,35 @@ st.markdown("""
         border-color: #777 !important;
     }
 
-    /* 슬라이더 레이블(마크다운 p) 위아래 간격 */
     [data-testid="stSidebar"] div[data-testid="stMarkdownContainer"] p {
         font-size: 14px !important;
-        margin-top: 8px !important;
-        margin-bottom: 4px !important;
+        margin-top: 14px !important;
+        margin-bottom: 0px !important;
     }
-    /* 슬라이더 자체 위 여백 */
     [data-testid="stSidebar"] .stSlider {
-        margin-top: -4px !important;
-        padding-bottom: 4px !important;
+        margin-top: 0px !important;
+        padding-bottom: 10px !important;
     }
-    /* 슬라이더 내부 숫자(value label) 크기 */
-    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMin"],
-    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMax"] {
-        font-size: 11px !important;
-    }
-    /* 셀렉트박스 위아래 여백 */
     [data-testid="stSidebar"] .stSelectbox {
         margin-top: -4px !important;
         margin-bottom: -4px !important;
     }
-    /* 텍스트 영역 위 여백 */
     [data-testid="stSidebar"] .stTextArea {
-        margin-top: -4px !important;
-        margin-bottom: -2px !important;
+        margin-top: -6px !important;
+        margin-bottom: -4px !important;
     }
     [data-testid="stSidebar"] .stTextArea textarea {
         font-size: 13px !important;
+    }
+
+    /* min/max 눈금을 슬라이더 트랙에 가깝게 */
+    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMin"],
+    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMax"] {
+        margin-top: -12px !important;
+    }
+    /* 현재값 숫자는 트랙에서 위로 더 띄우기 */
+    [data-testid="stSidebar"] .stSlider [data-testid="stThumbValue"] {
+        top: -32px !important;
     }
 </style>
 """, unsafe_allow_html=True)
