@@ -97,6 +97,7 @@ with st.sidebar:
 
     label_be = "베이스-에미터 전압 V_BE (V)" if bjt_type == "NPN" else "에미터-베이스 전압 V_EB (V)"
     st.markdown(f"<span style='font-size:0.75rem;font-weight:700;color:#2c3e50;'>{label_be}</span>", unsafe_allow_html=True)
+    st.sidebar.write("")
     V_be = st.slider(label_be, min_value=-5.0, max_value=5.0, step=0.05,
                      key="v_be_val", on_change=update_be_num, label_visibility="collapsed")
     st.number_input(label_be, min_value=-5.0, max_value=5.0, step=0.05,
@@ -105,6 +106,7 @@ with st.sidebar:
 
     label_bc = "베이스-컬렉터 전압 V_BC (V)" if bjt_type == "NPN" else "컬렉터-베이스 전압 V_CB (V)"
     st.markdown(f"<span style='font-size:0.75rem;font-weight:700;color:#2c3e50;margin-top:2px;display:block;'>{label_bc}</span>", unsafe_allow_html=True)
+    st.sidebar.write("")
     V_bc = st.slider(label_bc, min_value=-5.0, max_value=5.0, step=0.1,
                      key="v_bc_val", on_change=update_bc_num, label_visibility="collapsed")
     st.number_input(label_bc, min_value=-5.0, max_value=5.0, step=0.1,
